@@ -1,6 +1,6 @@
 # 部署
 
-本交付完成本地应用与可部署产物、工作流和静态子路径模拟。没有远程仓库授权或目标主机配置，因此未创建远程仓库、未向远程推送、未执行 GitHub Pages / 云端 API 发布。
+本交付完成本地应用、可部署产物和静态子路径模拟。后续用户已授权 GitHub 发布，源码已推送至 `jiangjinzhou01-ctrl/origin-ai-lab`，云端完整 CI 已通过。目前 Pages 首次启用被 GitHub 令牌权限阻止；网站尚未上线。详细实测记录见 github-deployment.md。
 
 ## 本地静态模式
 
@@ -68,4 +68,4 @@ HTTPS 页面不能连接普通 HTTP 后端；部署实时前端时必须设置 H
 - `model-integration.yml`：手动 / 每周运行真实模型集成、启动真实 API 再运行实时 E2E。
 - `pages.yml`：显式手动发布静态版本。
 
-这些工作流已做本地语法和等价命令检查，尚未在 GitHub 执行。网络、Pages 权限、Runner 和 Actions 运行结果必须在实际远程环境中确认。
+完整 CI 已在 GitHub 成功执行；Pages 工作流的检查和构建通过，但首次启用 Pages 的操作被 GitHub 拒绝。仓库 Settings → Pages 的 Source 设为 GitHub Actions 后，可再次运行发布工作流。

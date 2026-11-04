@@ -94,7 +94,7 @@ python scripts/serve-pages.py
 
 第二种方式访问 `http://127.0.0.1:4180/origin-ai-lab/`。Hash 导航可直接刷新，不需要服务端 SPA 重写。产物为 `apps/web/dist/`，Python 不在静态部署链路中。
 
-GitHub Pages 工作流已准备在 `.github/workflows/pages.yml`，需由仓库拥有者配置远程仓库、开启 Pages 的 Actions 来源后手动运行。**本交付未创建远程仓库，未执行云端发布。** 详细操作见 [deployment.md](docs/deployment.md)。
+GitHub Pages 工作流已准备在 `.github/workflows/pages.yml`，需由仓库拥有者配置远程仓库、开启 Pages 的 Actions 来源后手动运行。**源码现已推送至 https://github.com/jiangjinzhou01-ctrl/origin-ai-lab ，云端完整 CI 已通过。Pages 首次启用仍需要仓库设置；网站尚未发布成功。** 最新状态见 [GitHub 部署记录](docs/github-deployment.md)。 详细操作见 [deployment.md](docs/deployment.md)。
 
 ## 结构
 
