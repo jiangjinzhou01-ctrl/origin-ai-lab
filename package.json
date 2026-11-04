@@ -1,0 +1,26 @@
+{
+  "name": "origin-ai-lab",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace apps/web",
+    "build": "npm run build --workspace apps/web",
+    "check": "npm run check --workspace apps/web",
+    "lint": "npm run lint --workspace apps/web",
+    "test": "npm run test --workspace apps/web",
+    "test:e2e": "npm run test:e2e --workspace apps/web",
+    "schema:types": "node scripts/generate-types.mjs",
+    "format:check": "prettier --check \"apps/web/src/**/*.{ts,tsx,css}\" apps/web/vite.config.ts apps/web/playwright.config.ts apps/web/eslint.config.js apps/web/e2e/lab.spec.ts \"scripts/*.mjs\""
+  },
+  "devDependencies": {
+    "json-schema-to-typescript": "15.0.4",
+    "prettier": "3.9.10"
+  },
+  "license": "MIT",
+  "overrides": {
+    "minimatch": "11.0.4"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "model_id": "openai-community/gpt2",
+  "revision": "607a30d783dfa663caf39e06633721c8d4cfcd7e",
+  "backend": "transformer_lens.TransformerBridge",
+  "versions": {
+    "torch": "2.10.0+cpu",
+    "transformers": "5.22.1",
+    "transformer-lens": "4.3.0"
+  },
+  "load_seconds": 33.98129393299999,
+  "two_forwards_seconds": 0.19077269999999658,
+  "input": "The cat sat on the",
+  "token_ids": [
+    464,
+    3797,
+    3332,
+    319,
+    262
+  ],
+  "decoded_tokens": [
+    "The",
+    " cat",
+    " sat",
+    " on",
+    " the"
+  ],
+  "bos_id": 50256,
+  "bos_inserted": false,
+  "default_bridge_bos_tokens": [
+    [
+      50256,
+      464,
+      3797,
+      3332,
+      319,
+      262
+    ]
+  ],
+  "config": {
+    "layers": 12,
+    "heads": 12,
+    "hidden_size": 768
+  },
+  "logits_shape": [
+    1,
+    5,
+    50257
+  ],
+  "attention_shape": [
+    1,
+    12,
+    5,
+    5
+  ],
+  "residual_shape": [
+    1,
+    5,
+    768
+  ],
+  "verified_hooks": [
+    "blocks.0.attn.hook_pattern",
+    "blocks.1.attn.hook_pattern",
+    "blocks.2.attn.hook_pattern",
+    "blocks.3.attn.hook_pattern",
+    "blocks.4.attn.hook_pattern",
+    "blocks.5.attn.hook_pattern",
+    "blocks.6.attn.hook_pattern",
+    "blocks.7.attn.hook_pattern",
+    "blocks.8.attn.hook_pattern",
+    "blocks.9.attn.hook_pattern",
+    "blocks.10.attn.hook_pattern",
+    "blocks.11.attn.hook_pattern",
+    "blocks.0.hook_out",
+    "blocks.1.hook_out",
+    "blocks.2.hook_out",
+    "blocks.3.hook_out",
+    "blocks.4.hook_out",
+    "blocks.5.hook_out",
+    "blocks.6.hook_out",
+    "blocks.7.hook_out",
+    "blocks.8.hook_out",
+    "blocks.9.hook_out",
+    "blocks.10.hook_out",
+    "blocks.11.hook_out"
+  ],
+  "repeat_exact": true,
+  "causal_mask_valid": true,
+  "rows_normalized": true,
+  "available_embedding_hooks": [
+    "embed.hook_in",
+    "embed.hook_out",
+    "pos_embed.hook_in",
+    "pos_embed.hook_out",
+    "ln_final.hook_in",
+    "ln_final.hook_out",
+    "ln_final.hook_normalized",
+    "ln_final.hook_scale",
+    "unembed.hook_in",
+    "unembed.hook_out",
+    "hook_embed",
+    "hook_pos_embed",
+    "hook_unembed"
+  ],
+  "top_prediction_id": 4314
+}

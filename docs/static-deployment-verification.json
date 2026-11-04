@@ -1,0 +1,18 @@
+{
+  "base": "http://127.0.0.1:4180/origin-ai-lab/",
+  "python_backend_running": false,
+  "hash_refresh": [
+    "architecture",
+    "explore"
+  ],
+  "assets_verified": [
+    "JS",
+    "CSS",
+    "origin.svg",
+    "manifest.json",
+    "experiment JSON",
+    "third-party-notices.txt"
+  ],
+  "console_errors": [],
+  "about_page_verified": true
+}

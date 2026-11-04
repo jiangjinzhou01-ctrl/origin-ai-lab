@@ -1,0 +1,17 @@
+{
+  "stats": {
+    "startTime": "2026-11-04T10:16:51.683Z",
+    "duration": 44119.297,
+    "expected": 14,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "command": "ORIGIN_LIVE_TEST=1 npm run test:e2e",
+  "browser": "Chromium 155.0.8059.79",
+  "viewports": [
+    "1440x1000",
+    "390x844 touch"
+  ],
+  "console_and_resource_checks": true
+}

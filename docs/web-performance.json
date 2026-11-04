@@ -1,0 +1,64 @@
+{
+  "url": "http://127.0.0.1:4180/origin-ai-lab/",
+  "browser": "155.0.8059.79",
+  "environment": "Managed Linux, Chromium headless. Mobile is viewport/touch emulation on the same CPU, not a physical device. No network/CPU throttling. Times include Playwright round trips; no FPS claim.",
+  "measurements": [
+    {
+      "viewport": "1440 × 1000",
+      "home_interactive_ms": 603.9516279999999,
+      "paints": [
+        {
+          "name": "first-paint",
+          "ms": 100
+        },
+        {
+          "name": "first-contentful-paint",
+          "ms": 392
+        }
+      ],
+      "spatial_chunk_requested": true,
+      "idle_raf_callbacks_in_2_seconds": 0,
+      "idle_webgl_draw_calls_in_2_seconds": 0,
+      "layer_and_head_switch_ms": [
+        78.77014400000007,
+        241.5092620000005,
+        124.10087299999941,
+        45.62201300000015,
+        70.55094399999871
+      ],
+      "median_switch_ms": 78.77014400000007,
+      "memory": {
+        "before_mb": 9.296329498291016,
+        "after_5_navigation_cycles_mb": 11.36526870727539,
+        "delta_mb": 2.068939208984375,
+        "note": "Short regression check after GC, not a proof of absence of long-term leaks."
+      }
+    },
+    {
+      "viewport": "390 × 844, touch",
+      "home_interactive_ms": 511.38273899999876,
+      "paints": [
+        {
+          "name": "first-paint",
+          "ms": 96
+        },
+        {
+          "name": "first-contentful-paint",
+          "ms": 392
+        }
+      ],
+      "spatial_chunk_requested": false,
+      "idle_raf_callbacks_in_2_seconds": 0,
+      "idle_webgl_draw_calls_in_2_seconds": 0,
+      "layer_and_head_switch_ms": [
+        34.74812100000054,
+        32.21405700000105,
+        18.036416999999346,
+        20.155190000001312,
+        20.376377999997203
+      ],
+      "median_switch_ms": 20.376377999997203,
+      "memory": null
+    }
+  ]
+}

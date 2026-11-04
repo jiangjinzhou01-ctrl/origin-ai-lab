@@ -1,0 +1,13 @@
+{
+  "stats": {
+    "startTime": "2026-11-04T10:18:33.494Z",
+    "duration": 30014.864999999998,
+    "expected": 10,
+    "skipped": 4,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "command": "ORIGIN_TEST_URL=http://127.0.0.1:4180/origin-ai-lab/ npm run test:e2e",
+  "python_backend_running": false,
+  "live_tests_intentionally_skipped": true
+}

@@ -1,0 +1,45 @@
+name: Real GPT-2 integration
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 6 * * 1'
+permissions:
+  contents: read
+jobs:
+  model:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      HF_HUB_DISABLE_XET: '1'
+    steps:
+      - uses: actions/checkout@v5
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.13.4'
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+          cache: npm
+      - run: uv sync --frozen
+        working-directory: services/model-api
+      - run: uv run pytest -m integration -q
+        working-directory: services/model-api
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Start real model API and await readiness
+        working-directory: services/model-api
+        run: |
+          uv run uvicorn app.main:app --host 127.0.0.1 --port 8000 > /tmp/origin-api.log 2>&1 &
+          uv run python - <<'PY'
+          import time, httpx
+          for _ in range(180):
+              try:
+                  if httpx.get('http://127.0.0.1:8000/api/health').json()['model_ready']:
+                      break
+              except httpx.TransportError:
+                  pass
+              time.sleep(1)
+          else:
+              raise RuntimeError('Model API did not become ready')
+          PY
+      - run: ORIGIN_LIVE_TEST=1 npm run test:e2e

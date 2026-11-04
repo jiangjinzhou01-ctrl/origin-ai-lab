@@ -1,0 +1,16 @@
+:root {
+  color-scheme: dark;
+  --bg: #0b0f12;
+  --bg-secondary: #12181d;
+  --surface: #1a2228;
+  --text: #f0f0ec;
+  --secondary: #b1bdc3;
+  --muted: #8999a3;
+  --accent: #9cbcc5;
+  --active: #d9e7ea;
+  --warm: #c4a98c;
+  --divider: #293239;
+  --error: #edb6a7;
+  --font: 'Open Sans', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC', system-ui, sans-serif;
+  --mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+}

@@ -1,0 +1,107 @@
+{
+  "environment": {
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "python": "3.12.14",
+    "logical_cpus": 3,
+    "device": "cpu",
+    "threads": 2
+  },
+  "method": "HTTP to a reused local model process. Three uncached distinct prompts per size; no GPU. Timing includes actual JSON transfer. Cache time measured separately.",
+  "measurements": [
+    {
+      "tokens": 5,
+      "samples": [
+        {
+          "wall_ms": 323.7344200001644,
+          "inference_ms": 303.38970599996173,
+          "serialization_validation_ms": 14.212862000022142,
+          "bytes": 68422,
+          "gzip_bytes": 17641,
+          "rss_mb": 1026.95703125
+        },
+        {
+          "wall_ms": 201.38950599994132,
+          "inference_ms": 184.5530119999239,
+          "serialization_validation_ms": 13.316350000422972,
+          "bytes": 68352,
+          "gzip_bytes": 17582,
+          "rss_mb": 1027.92578125
+        },
+        {
+          "wall_ms": 292.59608299980755,
+          "inference_ms": 261.2817399999585,
+          "serialization_validation_ms": 21.70721600032266,
+          "bytes": 68317,
+          "gzip_bytes": 17507,
+          "rss_mb": 1027.98828125
+        }
+      ],
+      "median_inference_ms": 261.2817399999585,
+      "median_wall_ms": 292.59608299980755
+    },
+    {
+      "tokens": 16,
+      "samples": [
+        {
+          "wall_ms": 295.3802669999277,
+          "inference_ms": 255.97477599967533,
+          "serialization_validation_ms": 33.06305699970835,
+          "bytes": 342359,
+          "gzip_bytes": 101334,
+          "rss_mb": 1044.31640625
+        },
+        {
+          "wall_ms": 514.3192649998127,
+          "inference_ms": 485.02689400038435,
+          "serialization_validation_ms": 23.14577199967971,
+          "bytes": 341923,
+          "gzip_bytes": 101420,
+          "rss_mb": 1047.5234375
+        },
+        {
+          "wall_ms": 525.7229209996694,
+          "inference_ms": 491.3914239996302,
+          "serialization_validation_ms": 27.52595600031782,
+          "bytes": 341737,
+          "gzip_bytes": 100742,
+          "rss_mb": 1049.80859375
+        }
+      ],
+      "median_inference_ms": 485.02689400038435,
+      "median_wall_ms": 514.3192649998127
+    },
+    {
+      "tokens": 64,
+      "samples": [
+        {
+          "wall_ms": 970.6516410001313,
+          "inference_ms": 693.5538279999491,
+          "serialization_validation_ms": 212.4272450000717,
+          "bytes": 4450720,
+          "gzip_bytes": 1154999,
+          "rss_mb": 1087.53125
+        },
+        {
+          "wall_ms": 594.3319409998367,
+          "inference_ms": 359.64649999959875,
+          "serialization_validation_ms": 183.2704400003422,
+          "bytes": 4475043,
+          "gzip_bytes": 1176655,
+          "rss_mb": 1132.9375
+        },
+        {
+          "wall_ms": 701.646854000046,
+          "inference_ms": 425.3333910000947,
+          "serialization_validation_ms": 234.01293800043277,
+          "bytes": 4424791,
+          "gzip_bytes": 1127289,
+          "rss_mb": 1160.65234375
+        }
+      ],
+      "median_inference_ms": 425.3333910000947,
+      "median_wall_ms": 701.646854000046
+    }
+  ],
+  "model_load_ms": 1050.3403239999898,
+  "cached_64_tokens_wall_ms": 780.0664569999753
+}

@@ -1,0 +1,7 @@
+node_modules
+dist
+**/.venv
+**/test-results
+apps/web/src/data/analysis.generated.ts
+apps/web/public/data
+package-lock.json

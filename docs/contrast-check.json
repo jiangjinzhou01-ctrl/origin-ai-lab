@@ -1,0 +1,50 @@
+{
+  "method": "WCAG relative luminance; body text tokens on the three base surfaces. Matrix cells are separately tested at 101 probabilities. This is not a full WCAG certification.",
+  "results": [
+    {
+      "foreground": "#f0f0ec",
+      "background": "#0b0f12",
+      "contrast": 16.84
+    },
+    {
+      "foreground": "#f0f0ec",
+      "background": "#12181d",
+      "contrast": 15.65
+    },
+    {
+      "foreground": "#f0f0ec",
+      "background": "#1a2228",
+      "contrast": 14.1
+    },
+    {
+      "foreground": "#b1bdc3",
+      "background": "#0b0f12",
+      "contrast": 10.02
+    },
+    {
+      "foreground": "#b1bdc3",
+      "background": "#12181d",
+      "contrast": 9.31
+    },
+    {
+      "foreground": "#b1bdc3",
+      "background": "#1a2228",
+      "contrast": 8.39
+    },
+    {
+      "foreground": "#8999a3",
+      "background": "#0b0f12",
+      "contrast": 6.55
+    },
+    {
+      "foreground": "#8999a3",
+      "background": "#12181d",
+      "contrast": 6.09
+    },
+    {
+      "foreground": "#8999a3",
+      "background": "#1a2228",
+      "contrast": 5.49
+    }
+  ]
+}

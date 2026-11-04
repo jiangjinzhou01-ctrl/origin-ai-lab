@@ -1,0 +1,812 @@
+{
+  "$defs": {
+    "Activation": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "layer": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Layer"
+        },
+        "hook": {
+          "title": "Hook",
+          "type": "string"
+        },
+        "location": {
+          "title": "Location",
+          "type": "string"
+        },
+        "tensor_shape": {
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "integer"
+            }
+          ],
+          "title": "Tensor Shape",
+          "type": "array"
+        },
+        "l2": {
+          "items": {
+            "type": "number"
+          },
+          "title": "L2",
+          "type": "array"
+        },
+        "rms": {
+          "items": {
+            "type": "number"
+          },
+          "title": "Rms",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "layer",
+        "hook",
+        "location",
+        "tensor_shape",
+        "l2",
+        "rms"
+      ],
+      "title": "Activation",
+      "type": "object"
+    },
+    "Architecture": {
+      "additionalProperties": false,
+      "properties": {
+        "family": {
+          "const": "GPT-2 decoder-only, pre-LayerNorm",
+          "title": "Family",
+          "type": "string"
+        },
+        "representation": {
+          "const": "semantic component schematic",
+          "title": "Representation",
+          "type": "string"
+        },
+        "components": {
+          "items": {
+            "$ref": "#/$defs/Component"
+          },
+          "title": "Components",
+          "type": "array"
+        },
+        "connections": {
+          "items": {
+            "$ref": "#/$defs/Connection"
+          },
+          "title": "Connections",
+          "type": "array"
+        }
+      },
+      "required": [
+        "family",
+        "representation",
+        "components",
+        "connections"
+      ],
+      "title": "Architecture",
+      "type": "object"
+    },
+    "Attention": {
+      "additionalProperties": false,
+      "properties": {
+        "axes": {
+          "maxItems": 4,
+          "minItems": 4,
+          "prefixItems": [
+            {
+              "const": "layer",
+              "type": "string"
+            },
+            {
+              "const": "head",
+              "type": "string"
+            },
+            {
+              "const": "query",
+              "type": "string"
+            },
+            {
+              "const": "key",
+              "type": "string"
+            }
+          ],
+          "title": "Axes",
+          "type": "array"
+        },
+        "shape": {
+          "maxItems": 4,
+          "minItems": 4,
+          "prefixItems": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "integer"
+            }
+          ],
+          "title": "Shape",
+          "type": "array"
+        },
+        "values": {
+          "items": {
+            "items": {
+              "items": {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "title": "Values",
+          "type": "array"
+        },
+        "hooks": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Hooks",
+          "type": "array"
+        },
+        "precision": {
+          "const": "float32, rounded to 8 decimal places",
+          "title": "Precision",
+          "type": "string"
+        },
+        "causal": {
+          "const": true,
+          "title": "Causal",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "axes",
+        "shape",
+        "values",
+        "hooks",
+        "precision",
+        "causal"
+      ],
+      "title": "Attention",
+      "type": "object"
+    },
+    "Candidate": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "minimum": 0,
+          "title": "Id",
+          "type": "integer"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "display": {
+          "title": "Display",
+          "type": "string"
+        },
+        "logit": {
+          "title": "Logit",
+          "type": "number"
+        },
+        "probability": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Probability",
+          "type": "number"
+        }
+      },
+      "required": [
+        "id",
+        "text",
+        "display",
+        "logit",
+        "probability"
+      ],
+      "title": "Candidate",
+      "type": "object"
+    },
+    "Component": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "embedding",
+            "position",
+            "block",
+            "norm",
+            "attention",
+            "mlp",
+            "projection",
+            "residual"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "layer": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Layer"
+        },
+        "input_shape": {
+          "items": {
+            "type": "integer"
+          },
+          "title": "Input Shape",
+          "type": "array"
+        },
+        "output_shape": {
+          "items": {
+            "type": "integer"
+          },
+          "title": "Output Shape",
+          "type": "array"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "kind",
+        "layer",
+        "input_shape",
+        "output_shape",
+        "description"
+      ],
+      "title": "Component",
+      "type": "object"
+    },
+    "Connection": {
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "title": "Source",
+          "type": "string"
+        },
+        "target": {
+          "title": "Target",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "flow",
+            "residual",
+            "add",
+            "tied_weights"
+          ],
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source",
+        "target",
+        "kind"
+      ],
+      "title": "Connection",
+      "type": "object"
+    },
+    "Input": {
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "sequence_length": {
+          "maximum": 64,
+          "minimum": 1,
+          "title": "Sequence Length",
+          "type": "integer"
+        },
+        "add_special_tokens": {
+          "const": false,
+          "title": "Add Special Tokens",
+          "type": "boolean"
+        },
+        "bos_inserted": {
+          "const": false,
+          "title": "Bos Inserted",
+          "type": "boolean"
+        },
+        "bos_token_id": {
+          "title": "Bos Token Id",
+          "type": "integer"
+        },
+        "tokenization": {
+          "const": "byte-level BPE",
+          "title": "Tokenization",
+          "type": "string"
+        }
+      },
+      "required": [
+        "text",
+        "sequence_length",
+        "add_special_tokens",
+        "bos_inserted",
+        "bos_token_id",
+        "tokenization"
+      ],
+      "title": "Input",
+      "type": "object"
+    },
+    "ModelInfo": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "const": "openai-community/gpt2",
+          "title": "Id",
+          "type": "string"
+        },
+        "revision": {
+          "pattern": "^[0-9a-f]{40}$",
+          "title": "Revision",
+          "type": "string"
+        },
+        "tokenizer_revision": {
+          "pattern": "^[0-9a-f]{40}$",
+          "title": "Tokenizer Revision",
+          "type": "string"
+        },
+        "model_type": {
+          "const": "gpt2",
+          "title": "Model Type",
+          "type": "string"
+        },
+        "layers": {
+          "exclusiveMinimum": 0,
+          "title": "Layers",
+          "type": "integer"
+        },
+        "heads": {
+          "exclusiveMinimum": 0,
+          "title": "Heads",
+          "type": "integer"
+        },
+        "hidden_size": {
+          "exclusiveMinimum": 0,
+          "title": "Hidden Size",
+          "type": "integer"
+        },
+        "intermediate_size": {
+          "exclusiveMinimum": 0,
+          "title": "Intermediate Size",
+          "type": "integer"
+        },
+        "vocab_size": {
+          "exclusiveMinimum": 0,
+          "title": "Vocab Size",
+          "type": "integer"
+        },
+        "context_length": {
+          "exclusiveMinimum": 0,
+          "title": "Context Length",
+          "type": "integer"
+        },
+        "parameter_count": {
+          "exclusiveMinimum": 0,
+          "title": "Parameter Count",
+          "type": "integer"
+        },
+        "activation_function": {
+          "title": "Activation Function",
+          "type": "string"
+        },
+        "layer_norm_epsilon": {
+          "exclusiveMinimum": 0,
+          "title": "Layer Norm Epsilon",
+          "type": "number"
+        },
+        "tied_embeddings": {
+          "title": "Tied Embeddings",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "revision",
+        "tokenizer_revision",
+        "model_type",
+        "layers",
+        "heads",
+        "hidden_size",
+        "intermediate_size",
+        "vocab_size",
+        "context_length",
+        "parameter_count",
+        "activation_function",
+        "layer_norm_epsilon",
+        "tied_embeddings"
+      ],
+      "title": "ModelInfo",
+      "type": "object"
+    },
+    "Prediction": {
+      "additionalProperties": false,
+      "properties": {
+        "position": {
+          "minimum": 0,
+          "title": "Position",
+          "type": "integer"
+        },
+        "candidates": {
+          "items": {
+            "$ref": "#/$defs/Candidate"
+          },
+          "title": "Candidates",
+          "type": "array"
+        },
+        "remaining_probability": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Remaining Probability",
+          "type": "number"
+        }
+      },
+      "required": [
+        "position",
+        "candidates",
+        "remaining_probability"
+      ],
+      "title": "Prediction",
+      "type": "object"
+    },
+    "Predictions": {
+      "additionalProperties": false,
+      "properties": {
+        "distribution": {
+          "const": "softmax over full vocabulary, temperature=1, no sampling",
+          "title": "Distribution",
+          "type": "string"
+        },
+        "top_k": {
+          "maximum": 20,
+          "minimum": 1,
+          "title": "Top K",
+          "type": "integer"
+        },
+        "by_position": {
+          "items": {
+            "$ref": "#/$defs/Prediction"
+          },
+          "title": "By Position",
+          "type": "array"
+        }
+      },
+      "required": [
+        "distribution",
+        "top_k",
+        "by_position"
+      ],
+      "title": "Predictions",
+      "type": "object"
+    },
+    "Provenance": {
+      "additionalProperties": false,
+      "properties": {
+        "generated_at": {
+          "title": "Generated At",
+          "type": "string"
+        },
+        "analysis_code_version": {
+          "title": "Analysis Code Version",
+          "type": "string"
+        },
+        "analysis_code_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Analysis Code Sha256",
+          "type": "string"
+        },
+        "dependencies": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Dependencies",
+          "type": "object"
+        },
+        "model_config_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Model Config Sha256",
+          "type": "string"
+        },
+        "tensor_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Tensor Sha256",
+          "type": "string"
+        },
+        "checksum_definition": {
+          "const": "SHA256 of little-endian float32 attention, raw logits, and cached residuals in hook order",
+          "title": "Checksum Definition",
+          "type": "string"
+        },
+        "index_base": {
+          "const": 0,
+          "title": "Index Base",
+          "type": "integer"
+        },
+        "rounding_decimals": {
+          "const": 8,
+          "title": "Rounding Decimals",
+          "type": "integer"
+        },
+        "validation": {
+          "const": "schema + finite + shape + normalization + causal mask + byte reconstruction",
+          "title": "Validation",
+          "type": "string"
+        },
+        "model_license": {
+          "const": "MIT",
+          "title": "Model License",
+          "type": "string"
+        }
+      },
+      "required": [
+        "generated_at",
+        "analysis_code_version",
+        "analysis_code_sha256",
+        "dependencies",
+        "model_config_sha256",
+        "tensor_sha256",
+        "checksum_definition",
+        "index_base",
+        "rounding_decimals",
+        "validation",
+        "model_license"
+      ],
+      "title": "Provenance",
+      "type": "object"
+    },
+    "Runtime": {
+      "additionalProperties": false,
+      "properties": {
+        "backend": {
+          "const": "transformer_lens.TransformerBridge",
+          "title": "Backend",
+          "type": "string"
+        },
+        "device": {
+          "title": "Device",
+          "type": "string"
+        },
+        "dtype": {
+          "const": "float32",
+          "title": "Dtype",
+          "type": "string"
+        },
+        "eval_mode": {
+          "const": true,
+          "title": "Eval Mode",
+          "type": "boolean"
+        },
+        "inference_mode": {
+          "const": true,
+          "title": "Inference Mode",
+          "type": "boolean"
+        },
+        "attention_implementation": {
+          "const": "eager",
+          "title": "Attention Implementation",
+          "type": "string"
+        },
+        "max_tokens": {
+          "maximum": 64,
+          "minimum": 1,
+          "title": "Max Tokens",
+          "type": "integer"
+        },
+        "cpu_threads": {
+          "exclusiveMinimum": 0,
+          "title": "Cpu Threads",
+          "type": "integer"
+        },
+        "model_load_ms": {
+          "minimum": 0,
+          "title": "Model Load Ms",
+          "type": "number"
+        },
+        "inference_ms": {
+          "minimum": 0,
+          "title": "Inference Ms",
+          "type": "number"
+        },
+        "serialization_ms": {
+          "minimum": 0,
+          "title": "Serialization Ms",
+          "type": "number"
+        },
+        "process_rss_mb": {
+          "exclusiveMinimum": 0,
+          "title": "Process Rss Mb",
+          "type": "number"
+        },
+        "cache_hit": {
+          "title": "Cache Hit",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "backend",
+        "device",
+        "dtype",
+        "eval_mode",
+        "inference_mode",
+        "attention_implementation",
+        "max_tokens",
+        "cpu_threads",
+        "model_load_ms",
+        "inference_ms",
+        "serialization_ms",
+        "process_rss_mb",
+        "cache_hit"
+      ],
+      "title": "Runtime",
+      "type": "object"
+    },
+    "Token": {
+      "additionalProperties": false,
+      "properties": {
+        "position": {
+          "minimum": 0,
+          "title": "Position",
+          "type": "integer"
+        },
+        "id": {
+          "minimum": 0,
+          "title": "Id",
+          "type": "integer"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "display": {
+          "title": "Display",
+          "type": "string"
+        },
+        "raw_piece": {
+          "title": "Raw Piece",
+          "type": "string"
+        },
+        "byte_hex": {
+          "title": "Byte Hex",
+          "type": "string"
+        },
+        "is_special": {
+          "title": "Is Special",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "position",
+        "id",
+        "text",
+        "display",
+        "raw_piece",
+        "byte_hex",
+        "is_special"
+      ],
+      "title": "Token",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "origin.analysis.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "analysis_id": {
+      "title": "Analysis Id",
+      "type": "string"
+    },
+    "source_mode": {
+      "enum": [
+        "static",
+        "live"
+      ],
+      "title": "Source Mode",
+      "type": "string"
+    },
+    "input": {
+      "$ref": "#/$defs/Input"
+    },
+    "model": {
+      "$ref": "#/$defs/ModelInfo"
+    },
+    "runtime": {
+      "$ref": "#/$defs/Runtime"
+    },
+    "tokens": {
+      "items": {
+        "$ref": "#/$defs/Token"
+      },
+      "title": "Tokens",
+      "type": "array"
+    },
+    "architecture": {
+      "$ref": "#/$defs/Architecture"
+    },
+    "attention": {
+      "$ref": "#/$defs/Attention"
+    },
+    "activation_summaries": {
+      "items": {
+        "$ref": "#/$defs/Activation"
+      },
+      "title": "Activation Summaries",
+      "type": "array"
+    },
+    "next_token_predictions": {
+      "$ref": "#/$defs/Predictions"
+    },
+    "provenance": {
+      "$ref": "#/$defs/Provenance"
+    }
+  },
+  "required": [
+    "schema_version",
+    "analysis_id",
+    "source_mode",
+    "input",
+    "model",
+    "runtime",
+    "tokens",
+    "architecture",
+    "attention",
+    "activation_summaries",
+    "next_token_predictions",
+    "provenance"
+  ],
+  "title": "Analysis",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://origin.local/schemas/origin.analysis.v1.json"
+}
