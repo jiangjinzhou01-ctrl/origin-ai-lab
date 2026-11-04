@@ -1,0 +1,35 @@
+{
+  "schema_version": "origin.manifest.v1",
+  "experiments": [
+    {
+      "id": "language",
+      "title": "语言的下一步",
+      "description": "一个短句，观察上下文如何分配注意力。",
+      "text": "The cat sat on the",
+      "path": "language.json",
+      "bytes": 68377,
+      "sha256": "ad43838f22d7846448bc5758137d3187c96388879b585dcb2d6c66ae0fa90794",
+      "tokens": 5
+    },
+    {
+      "id": "sunset",
+      "title": "日落之后",
+      "description": "从条件从句观察序列中的位置与关系。",
+      "text": "When the sun goes down",
+      "path": "sunset.json",
+      "bytes": 68478,
+      "sha256": "f48f41e9a978f1a8e6a721ae7e49078584ec298adba04e1a75e461ad57c76669",
+      "tokens": 5
+    },
+    {
+      "id": "intelligence",
+      "title": "关于智能",
+      "description": "Byte-level BPE 如何拆分一个抽象概念。",
+      "text": "Artificial intelligence can",
+      "path": "intelligence.json",
+      "bytes": 56507,
+      "sha256": "2ad5df2bea143e5eed86d013eab73d4a368901b1f35a11c71703a9c2758be367",
+      "tokens": 4
+    }
+  ]
+}

@@ -27,4 +27,4 @@
 
 已直接对这个公网地址运行 Playwright：桌面与移动 10 项通过，4 项仅适用于实时 Python API 的测试明确跳过。首页返回真实 React 应用，JS / CSS / JSON 路径正确，模型选择、矩阵数值、因果遮罩、回放、键盘、WebGL 降级与故障恢复均通过。
 
-Pages 工作流在已启用的站点上将 build_type 固定为 workflow，避免传统 Jekyll 分支构建在后续源代码推送时覆盖生产应用。
+当前仓库选择 main 根目录分支发布。修改 build_type 的请求也被 GitHub 拒绝，因此保留用户已启用的配置：根目录存放生成的静态快照及 .nojekyll，避免 Jekyll 将 README 当首页。pages.yml 在测试和构建通过后同步该快照，再发布 dist；不再请求修改 Pages 设置。根目录的 assets、data、index.html 等是部署产物，勿手工编辑；可用 node scripts/stage-pages-root.mjs 从 dist 重生成。
