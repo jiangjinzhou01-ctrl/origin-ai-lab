@@ -1,0 +1,13 @@
+{
+  "url": "https://jiangjinzhou01-ctrl.github.io/origin-ai-lab/",
+  "command": "ORIGIN_TEST_URL=https://jiangjinzhou01-ctrl.github.io/origin-ai-lab/ npm run test:e2e",
+  "stats": {
+    "startTime": "2026-11-04T12:54:23.478Z",
+    "duration": 26814.208,
+    "expected": 10,
+    "skipped": 4,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "live_python_not_hosted_on_pages": true
+}

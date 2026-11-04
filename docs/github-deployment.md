@@ -9,7 +9,7 @@
 - GitHub 完整 CI 成功：https://github.com/jiangjinzhou01-ctrl/origin-ai-lab/actions/runs/41831256796
 - 云端完成 npm ci、uv sync、协议一致性、严格 TS、Lint、前端测试、构建、后端非模型单元测试、桌面和移动静态 E2E。
 
-## 当前发布阻碍
+## 首次启用的历史阻碍
 
 首次 Pages 发布：https://github.com/jiangjinzhou01-ctrl/origin-ai-lab/actions/runs/41831256885
 
@@ -18,3 +18,13 @@
 官方 configure-pages action 说明其 enablement 参数需要具有相应权限的额外令牌，默认 GITHUB_TOKEN 不适用于首次启用。已移除这一不适用的自动启用参数，保留标准发布流程。
 
 仓库拥有者可在 https://github.com/jiangjinzhou01-ctrl/origin-ai-lab/settings/pages 把 Build and deployment 的 Source 设为 GitHub Actions。随后重新运行 pages.yml；只在实际成功部署和 HTTP 验证后记录线上地址。Python API 不由 Pages 托管。
+
+## 实际发布成功
+
+仓库拥有者完成首次启用后，发布工作流成功：https://github.com/jiangjinzhou01-ctrl/origin-ai-lab/actions/runs/41833175616
+
+线上地址：https://jiangjinzhou01-ctrl.github.io/origin-ai-lab/
+
+已直接对这个公网地址运行 Playwright：桌面与移动 10 项通过，4 项仅适用于实时 Python API 的测试明确跳过。首页返回真实 React 应用，JS / CSS / JSON 路径正确，模型选择、矩阵数值、因果遮罩、回放、键盘、WebGL 降级与故障恢复均通过。
+
+Pages 工作流在已启用的站点上将 build_type 固定为 workflow，避免传统 Jekyll 分支构建在后续源代码推送时覆盖生产应用。

@@ -30,6 +30,10 @@ jobs:
             echo "VITE_BASE_PATH=/$REPO_NAME/" >> "$GITHUB_ENV"
           fi
       - run: npm run check && npm run lint && npm test && npm run build
+      - name: Keep Pages builds on the Actions workflow
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method PUT "repos/${GITHUB_REPOSITORY}/pages" -f build_type=workflow --jq .build_type
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
